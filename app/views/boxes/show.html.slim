@@ -1,0 +1,13 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @box.name
+
+p
+  strong Git Url:
+  = "dokku@dokku.me:#{@box.slug}"
+
+= link_to 'Edit', edit_box_path(@box)
+'|
+= link_to 'Back', boxes_path
