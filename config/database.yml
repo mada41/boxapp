@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   pool: 5
   username: rails
-  password: 123456
+  password: simon12345
   host: localhost
 
 development:
