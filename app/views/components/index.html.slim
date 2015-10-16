@@ -1,0 +1,25 @@
+h1 Listing components
+
+table
+  thead
+    tr
+      th Name
+      th Type
+      th Box
+      th
+      th
+      th
+
+  tbody
+    - @components.each do |component|
+      tr
+        td = component.name
+        td = component.type
+        td = component.box_id
+        td = link_to 'Show', component
+        td = link_to 'Edit', edit_component_path(component)
+        td = link_to 'Destroy', component, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Component', new_component_path

@@ -8,6 +8,7 @@
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
 server '128.199.128.56', user: fetch(:deploy_user), roles: %w{app db web}, password: fetch(:deploy_user_pass)
+set :nginx_server_name, '41staging.com'
 
 # role-based syntax
 # ==================

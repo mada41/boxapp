@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @component.name
+p
+  strong Type:
+  = @component.type
+p
+  strong Box:
+  = @component.box_id
+
+= link_to 'Edit', edit_component_path(@component)
+'|
+= link_to 'Back', components_path
