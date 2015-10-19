@@ -11,15 +11,15 @@ class Box < ActiveRecord::Base
   private
 
     def create_dokku_app
-      `dokku apps:create #{self.slug}`
+      Rails.logger.info `dokku apps:create #{self.slug}`
     end
 
     def create_dokku_default_db
       db = self.components.create(c_type: 'postgres', type: 'Components::Database')
-      `dokku postgres:link #{db.name} #{self.slug}`
+      Rails.logger.info `dokku postgres:link #{db.name} #{self.slug}`
     end
 
     def destroy_dokku_app
-      `yes #{self.slug} | dokku apps:destroy #{self.slug}`
+      Rails.logger.info `yes #{self.slug} | dokku apps:destroy #{self.slug}`
     end
 end

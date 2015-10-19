@@ -8,10 +8,10 @@ class Components::Database < Component
   private
 
     def create_dokku_component
-      `dokku #{self.c_type}:create #{self.name}`
+      Rails.logger.info `dokku #{self.c_type}:create #{self.name}`
     end
 
     def delete_dokku_component
-      `yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}`
+      Rails.logger.info `yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}`
     end
 end
