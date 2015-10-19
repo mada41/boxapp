@@ -1,6 +1,6 @@
 class Box < ActiveRecord::Base
   belongs_to :user
-  has_many :components, dependent: :destroy
+  has_many :components
 
   validates :name, :slug, presence: true
   validates :slug, uniqueness: true
@@ -21,5 +21,6 @@ class Box < ActiveRecord::Base
 
     def destroy_dokku_app
       Rails.logger.info `yes #{self.slug} | dokku apps:destroy #{self.slug}`
+      self.components.destroy_all
     end
 end
