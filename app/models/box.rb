@@ -11,7 +11,7 @@ class Box < ActiveRecord::Base
   private
 
     def create_dokku_app
-      `dokku apps:destroy #{self.slug}`
+      `dokku apps:create #{self.slug}`
     end
 
     def create_dokku_default_db
@@ -20,6 +20,6 @@ class Box < ActiveRecord::Base
     end
 
     def destroy_dokku_app
-      `dokku apps:delete #{self.slug}`
+      `yes self.slug | dokku apps:delete #{self.slug}`
     end
 end

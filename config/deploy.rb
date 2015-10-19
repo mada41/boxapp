@@ -65,6 +65,7 @@ namespace :setup do
   # == the user must be "sudoers and nopassw" before setup ======
   # $: adduser rails
   # $: echo "rails ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  # $: sudo chown rails:rails /var/www/
 
   # == login as rails to generate and register ssh key to repo ==
   # $: ssh-keygen
