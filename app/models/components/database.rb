@@ -4,14 +4,4 @@ class Components::Database < Component
     cmd = `dokku #{self.c_type}:info #{self.name}`
     cmd.gsub("\n", '').gsub('DSN:', '').strip
   end
-
-  private
-
-    def create_dokku_component
-      Rails.logger.info `dokku #{self.c_type}:create #{self.name}`
-    end
-
-    def delete_dokku_component
-      Rails.logger.info `yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}`
-    end
 end

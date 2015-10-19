@@ -13,4 +13,18 @@ class Component < ActiveRecord::Base
       self.name = "#{self.box.id}#{Time.now.to_i}"
     end
 
+    def create_dokku_component
+      case self.type
+      when 'Components::Database'
+        Rails.logger.info `dokku #{self.c_type}:create #{self.name}`
+      end
+    end
+
+    def delete_dokku_component
+      case self.type
+      when 'Components::Database'
+        Rails.logger.info `yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}`
+      end
+    end
+
 end
