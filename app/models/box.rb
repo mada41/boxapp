@@ -20,6 +20,6 @@ class Box < ActiveRecord::Base
     end
 
     def destroy_dokku_app
-      `yes self.slug | dokku apps:delete #{self.slug}`
+      `yes #{self.slug} | dokku apps:delete #{self.slug}`
     end
 end
