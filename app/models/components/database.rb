@@ -12,6 +12,6 @@ class Components::Database < Component
     end
 
     def delete_dokku_component
-      `yes #{self.name} | dokku #{self.c_type}:delete #{self.name}`
+      `yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}`
     end
 end
