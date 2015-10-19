@@ -25,7 +25,7 @@ class Component < ActiveRecord::Base
       case self.type
       when 'Components::Database'
         Rails.logger.info `yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}`
-        Rails.logger.info self.type
+        Rails.logger.info "yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}"
       end
     end
 
