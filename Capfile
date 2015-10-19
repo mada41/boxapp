@@ -28,6 +28,7 @@ require 'capistrano/rails'
 require 'capistrano/rvm'
 require 'capistrano/unicorn_nginx'
 require 'capistrano/postgresql'
+require 'capistrano/rails/console'
 # ============================
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

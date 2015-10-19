@@ -49,6 +49,7 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'capistrano-unicorn-nginx', '~> 3.2.0'
   gem 'capistrano-postgresql', '~> 4.2.0'
+  gem 'capistrano-rails-console'
 end
 
 group :production do
