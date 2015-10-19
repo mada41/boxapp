@@ -22,8 +22,10 @@ class Component < ActiveRecord::Base
 
     def delete_dokku_component
       case self.type
+      Rails.logger.info self.type
       when 'Components::Database'
         Rails.logger.info `yes #{self.name} | dokku #{self.c_type}:destroy #{self.name}`
+        Rails.logger.info self.type
       end
     end
 
