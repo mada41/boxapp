@@ -1,15 +1,7 @@
-= form_for @component do |f|
-  - if @component.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@component.errors.count, "error")} prohibited this component from being saved:"
-      ul
-        - @component.errors.full_messages.each do |message|
-          li = message
+= bootstrap_form_for @component, url: @action_url do |f|
+  = f.alert_message "Please fix the errors below."
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :ctype
-    = f.text_field :ctype
-  .actions = f.submit
+  = f.select :c_type, component_select, {}, label: 'Component Type', class: 'selectpicker'
+
+  => f.submit
+  = link_to 'Back', box_components_path, class: 'btn btn-default'

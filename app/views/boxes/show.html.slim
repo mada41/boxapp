@@ -6,8 +6,11 @@ p
 
 p
   strong Git Url:
-  = "dokku@dokku.me:#{@box.slug}"
+  = "dokku@41staging.com:#{@box.slug}"
 
+= link_to 'Components', box_components_path(@box)
+'|
 = link_to 'Edit', edit_box_path(@box)
 '|
 = link_to 'Back', boxes_path
+

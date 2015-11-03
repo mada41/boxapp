@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
+//= require bootstrap-sprockets
+//= require bootstrap-select
 //= require_tree .
+
+$(function(){
+	$('.selectpicker').selectpicker();
+})

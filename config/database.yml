@@ -2,8 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: agungyuliaji
-  password: simon
+  username: rails
+  password: simon12345
   host: localhost
 
 development:

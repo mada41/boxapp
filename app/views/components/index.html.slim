@@ -1,6 +1,6 @@
 h1 Listing components
 
-table
+table.table
   thead
     tr
       th Name
@@ -16,10 +16,10 @@ table
         td = component.name
         td = component.type
         td = component.box_id
-        td = link_to 'Show', component
-        td = link_to 'Edit', edit_component_path(component)
-        td = link_to 'Destroy', component, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = link_to 'Show', box_component_path(id: component)
+        td = link_to 'Edit', edit_box_component_path(id: component)
+        td = link_to 'Destroy', box_component_path(id: component), data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
-= link_to 'New Component', new_component_path
+= link_to 'New Component', new_box_component_path
