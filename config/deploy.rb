@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'Mothership'
-set :repo_url, 'git@bitbucket.org:agungyuliaji/mothership.git'
+set :repo_url, 'git@github.com:41studio/41staging.git'
 
 # New Additions ======================
 set :deploy_user, 'rails'
@@ -128,10 +128,10 @@ end
 
 
 # After Before callbacks
-before 'rvm:check', 'setup:install_rvm'
-before 'nginx:setup', 'setup:install_nginx'
-before 'postgresql:create_db_user', 'setup:setup_postgresql'
-before 'postgresql:generate_database_yml', 'setup:create_db_directory_app'
-before 'postgresql:create_database', 'setup:drop_database'
+# before 'rvm:check', 'setup:install_rvm'
+# before 'nginx:setup', 'setup:install_nginx'
+# before 'postgresql:create_db_user', 'setup:setup_postgresql'
+# before 'postgresql:generate_database_yml', 'setup:create_db_directory_app'
+# before 'postgresql:create_database', 'setup:drop_database'
 
 
