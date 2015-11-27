@@ -6,6 +6,7 @@ table.table
       th Name
       th Type
       th Box
+      th Status
       th
       th
       th
@@ -14,8 +15,9 @@ table.table
     - @components.each do |component|
       tr
         td = component.name
-        td = component.type
+        td = component.c_type.titleize
         td = component.box_id
+        td = component.aasm_state
         td = link_to 'Show', box_component_path(id: component)
         td = link_to 'Edit', edit_box_component_path(id: component)
         td = link_to 'Destroy', box_component_path(id: component), data: {:confirm => 'Are you sure?'}, :method => :delete

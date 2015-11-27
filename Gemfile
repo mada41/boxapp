@@ -12,6 +12,10 @@ gem 'devise'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form'
+gem 'aasm'
+gem 'sidekiq'
+gem 'sinatra', require: nil
+gem 'foreman', require: nil
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-select'
@@ -26,6 +30,7 @@ group :development do
   gem 'capistrano-unicorn-nginx', '~> 3.2.0'
   gem 'capistrano-postgresql', '~> 4.2.0'
   gem 'capistrano-rails-console'
+  gem 'capistrano-sidekiq'
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'

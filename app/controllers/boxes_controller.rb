@@ -25,7 +25,7 @@ class BoxesController < ApplicationController
     @box = current_user.boxes.new(box_params)
 
     if @box.save
-      redirect_to @box, notice: 'Box was successfully created.'
+      redirect_to @box, notice: 'Box was scheduled creating.'
     else
       render :new
     end
@@ -42,8 +42,8 @@ class BoxesController < ApplicationController
 
   # DELETE /boxes/1
   def destroy
-    @box.destroy
-    redirect_to boxes_url, notice: 'Box was successfully destroyed.'
+    @box.destroy_container!
+    redirect_to boxes_url, notice: 'Box was scheduled destroying.'
   end
 
   private

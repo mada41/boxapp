@@ -46,6 +46,16 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+namespace :git do
+  task :update_repo_url do
+    on roles(:all) do
+      within repo_path do
+        execute :git, 'remote', 'set-url', 'origin', fetch(:repo_url)
+      end
+    end
+  end
+end
+
 namespace :deploy do
 
   after :restart, :clear_cache do
@@ -82,11 +92,12 @@ namespace :setup do
   # $: ssh-add
   # $: cat ~/.ssh/id_rsa.pub
 
-  desc "install rvm with stable ruby"
-  task :install_rvm do
+  desc "install rvm with stable ruby and redis"
+  task :install_rvm_and_redis do
     on roles(:app) do
       execute :sudo, "apt-get update"
-      execute :sudo, "apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev"
+      execute :sudo, "apt-get -y --force-yes install redis-server"
+      execute :sudo, "apt-get -y --force-yes install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev"
       execute "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3"
       execute "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     end
@@ -95,14 +106,14 @@ namespace :setup do
   desc "install postgresql and setup user"
   task :setup_postgresql do
     on roles(:app) do
-      execute :sudo, "apt-get -y install postgresql postgresql-contrib libpq-dev"
+      execute :sudo, "apt-get -y --force-yes install postgresql postgresql-contrib libpq-dev"
     end
   end
 
   desc "install nginx"
   task :install_nginx do
     on roles(:app) do
-      execute :sudo, "apt-get -y install nginx"
+      execute :sudo, "apt-get -y --force-yes install nginx"
       execute :sudo, "service nginx start"
       execute :sudo, "chown #{fetch(:deploy_user)}:#{fetch(:deploy_user)} /var/"
       execute "mkdir -p #{fetch(:deploy_to)}"
@@ -128,10 +139,10 @@ end
 
 
 # After Before callbacks
-# before 'rvm:check', 'setup:install_rvm'
-# before 'nginx:setup', 'setup:install_nginx'
-# before 'postgresql:create_db_user', 'setup:setup_postgresql'
-# before 'postgresql:generate_database_yml', 'setup:create_db_directory_app'
-# before 'postgresql:create_database', 'setup:drop_database'
+before 'setup', 'setup:install_rvm_and_redis'
+before 'nginx:setup', 'setup:install_nginx'
+before 'postgresql:create_db_user', 'setup:setup_postgresql'
+before 'postgresql:generate_database_yml', 'setup:create_db_directory_app'
+before 'postgresql:create_database', 'setup:drop_database'
 
 
