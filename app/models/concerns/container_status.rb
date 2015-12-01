@@ -4,7 +4,7 @@ module ContainerStatus
 	included do
 		include ::AASM
 
-		# rails bugs, after_commit still firing on update :(
+		# rails bugs, after_commit with on: :create still firing on update :(
 		# https://github.com/rails/rails/issues/14493
 		after_commit :init_container, on: :create 
 
@@ -53,10 +53,7 @@ module ContainerStatus
 	private
 
 		def init_container
-			if self.created_at.eql?(self.updated_at)
-				puts "-" * 20
-				puts "Create container Job Call"
-				puts "-" * 20
+			if self.created_at.eql?(self.updated_at) # check just for create temporary bug solving
       	self.create_container!
       end
     end

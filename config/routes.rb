@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ssh_keys
   resources :boxes do
     resources :components
   end

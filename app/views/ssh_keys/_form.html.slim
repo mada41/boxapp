@@ -1,0 +1,5 @@
+= bootstrap_form_for @ssh_key do |f|
+  = f.alert_message "Please fix the errors below."
+  = f.text_field :name
+  = f.text_area :key_string
+  = f.submit

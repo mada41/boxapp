@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116074536) do
+ActiveRecord::Schema.define(version: 20151127065153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20151116074536) do
   add_index "boxes", ["slug"], name: "index_boxes_on_slug", using: :btree
   add_index "boxes", ["user_id"], name: "index_boxes_on_user_id", using: :btree
 
+  create_table "boxes_users", force: :cascade do |t|
+    t.integer "box_id"
+    t.integer "user_id"
+  end
+
+  add_index "boxes_users", ["box_id"], name: "index_boxes_users_on_box_id", using: :btree
+  add_index "boxes_users", ["user_id"], name: "index_boxes_users_on_user_id", using: :btree
+
   create_table "components", force: :cascade do |t|
     t.string   "c_type"
     t.string   "name"
@@ -38,6 +46,16 @@ ActiveRecord::Schema.define(version: 20151116074536) do
   end
 
   add_index "components", ["box_id"], name: "index_components_on_box_id", using: :btree
+
+  create_table "ssh_keys", force: :cascade do |t|
+    t.string   "name"
+    t.text     "key_string"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ssh_keys", ["user_id"], name: "index_ssh_keys_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

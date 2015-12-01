@@ -7,10 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 	<div class="container">
+		<ul class="nav nav-pills">
+			<li role="presentation"><%= link_to 'My Boxes', boxes_path %></li>
+		  <li role="presentation"><%= link_to 'SSH Keys', ssh_keys_path %></li>
+		</ul>
 		<%= yield %>
 	</div>
-
 </body>
 </html>
