@@ -26,8 +26,9 @@ class CreateContainerJob < ActiveJob::Base
 
     if system_callback
       system "dokku #{obj.c_type}:link #{obj.name} #{obj.box.slug}"
-      obj.box.update_component_complete!
     end
+
+    obj.box.update_component_complete!
 
   	system_callback
   end
