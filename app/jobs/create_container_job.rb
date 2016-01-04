@@ -11,7 +11,7 @@ class CreateContainerJob < ActiveJob::Base
 	  end
 
 	  if system_callback
-      system("dokku ps:scale #{obj.slug}")
+      system("dokku ps:scale #{obj.slug}") if obj.class.eql? Box
       obj.aasm_complete!
     else
       obj.create_container_failed!
