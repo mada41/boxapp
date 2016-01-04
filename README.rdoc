@@ -17,4 +17,4 @@ echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbi8593baA5qpuRy71ffYh+KZYyv2+JiwMve
 Add Git User
 useradd -o -u 1000 git
 sudo usermod -d /home/dokku git
-usermod -aG docker dokku
+usermod -aG docker git
