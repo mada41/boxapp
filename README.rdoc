@@ -6,5 +6,15 @@ password : simon12345
 
 
 41Server
-ssh rails@192.168.1.30
+ssh rails@192.168.4.2
 password : simon12345
+
+
+Test SSH key
+echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbi8593baA5qpuRy71ffYh+KZYyv2+JiwMveeBApF7+O4ZsLhzG6pGW2oA5zlr8boTr/LTj4yhx0nUjQ7nlR6iJJmA9F8rCm0FGWgLN3JNMOJX9DWYMK2IAiQiGHtayMfTp3TPdGfPXe5qt9o/p7JJxPdcp9ADgodsyP+OeSrlIpTFkVTzyKEEFN1Xf9zrAWc7gwo7SLh6sCP6gCLxRAQQYUjGEw14uI+Gu021I92X5i/f9LJ6IOJ4z6baKzf28VufIPcFAZUKjz6PnJbSTTufgPVVKpxhb9GuGEIqjWvwuXQ3PQoQf3lKU/ZwBIGmNDfs/U4WXXiNJf19CGDG57XX agungyuliaji@Agungs-MacBook-Pro.local' | dokku deploy:allow rails-sample
+
+
+Add Git User
+useradd -o -u 1000 git
+sudo usermod -d /home/dokku git
+usermod -aG docker dokku
