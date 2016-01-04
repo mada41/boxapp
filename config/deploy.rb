@@ -113,7 +113,9 @@ namespace :setup do
   desc "install nginx"
   task :install_nginx do
     on roles(:app) do
-      execute :sudo, "apt-get -y --force-yes install nginx"
+      execute :sudo, "add-apt-repository -y ppa:rtcamp/nginx"
+      execute :sudo, "apt-get update"
+      execute :sudo, "apt-get -y --force-yes install nginx-custom"
       execute :sudo, "service nginx start"
       execute :sudo, "chown #{fetch(:deploy_user)}:#{fetch(:deploy_user)} /var/"
       execute "mkdir -p #{fetch(:deploy_to)}"
