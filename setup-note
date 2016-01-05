@@ -18,3 +18,7 @@ Add Git User
 useradd -o -u 1000 git
 sudo usermod -d /home/dokku git
 usermod -aG docker git
+
+
+Generate OpenSSL
+openssl req -new -x509 -keyout server.key -out server.crt -days 99999999 -nodes
