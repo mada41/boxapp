@@ -19,4 +19,4 @@ Setup your hosts configuration /etc/hosts
 ```
 
 Application boxes link
-[41staging.com/boxes](41staging.com/boxes)
+[41staging.com/boxes](http://41staging.com/boxes)
