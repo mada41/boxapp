@@ -1,4 +1,5 @@
 class SshKeysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ssh_key, only: [:show, :edit, :update, :destroy]
 
   # GET /ssh_keys

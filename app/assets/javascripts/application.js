@@ -16,6 +16,8 @@
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-select
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
 
 $(function(){
