@@ -10,6 +10,7 @@ gem 'jquery-turbolinks'
 gem 'nprogress-rails', '~> 0.1.2.3'
 gem 'unicorn'
 gem 'devise'
+gem 'devise-async'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form'
@@ -20,14 +21,21 @@ gem 'aasm'
 gem 'sidekiq'
 gem 'sinatra', require: nil
 gem 'foreman', require: nil
+gem 'pg'
+
+## API
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'grape'
+gem 'grape_devise_token_auth'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-select'
 end
 
 group :development do
+  gem 'thin'
   gem 'byebug'
-  gem 'sqlite3'
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-rvm'
@@ -38,11 +46,7 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'sextant'
-end
-
-group :production do
-  gem 'pg'
+  gem 'letter_opener_web', '~> 1.2.0'
 end
 
 
