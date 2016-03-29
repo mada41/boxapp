@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-	include CleanChildren
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  include CleanChildren
+  include DeviseTokenAuth::Concerns::User
+  # Include default devise modules.
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+          :recoverable, :rememberable, :trackable, :validatable,
+          :confirmable, :omniauthable
 
   has_many :boxes # no dependent destroy, see include CleanChildren concern model
   has_many :ssh_keys, dependent: :destroy

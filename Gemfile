@@ -28,6 +28,8 @@ gem 'devise_token_auth'
 gem 'omniauth'
 gem 'grape'
 gem 'grape_devise_token_auth'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-select'
