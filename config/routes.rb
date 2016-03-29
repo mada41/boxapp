@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: '/sidekiq'
   mount API::Base => '/api'
+  mount GrapeSwaggerRails::Engine, at: "/documentation"
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
@@ -18,9 +21,6 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for "User", at: 'auth'
     end
   end
-
-  require 'sidekiq/web'
-  mount Sidekiq::Web, at: '/sidekiq'
 
   root 'home#index'
 end
